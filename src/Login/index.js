@@ -3,7 +3,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 class Login extends Component{
     state = {
-        email: "",
+        username: "",
         password: ""
     }
 
