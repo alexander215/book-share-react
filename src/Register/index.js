@@ -19,9 +19,25 @@ class Register extends Component{
         console.log(this.state)
     }
 
+    handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const data = new FormData();
+        data.append('username', this.state.username);
+        data.append('password', this.state.password);
+        data.append('email', this.state.email);
+        data.append('file', this.state.photo);
+        console.log(data, '<-handlesubmit in e.preventDefault');
+        console.log(this.state, '<-this.state in e.preventDefault')
+
+        for (let pair of data.entries()){
+            console.log(pair[0] , ', ', pair[1])
+        }
+    }
+
     render(){
         return(
-        <Form className="loginForm">
+        <Form className="loginForm" onSubmit={this.handleSubmit}>
             <FormGroup>
                 <Label for="username">Username</Label>
                 <Input type="text" name="username" id="username" placeholder="enter username" onChange={this.handleChange}/>
@@ -41,7 +57,7 @@ class Register extends Component{
                     Your image shouldn't be larger than 2MB.
                 </FormText>
             </FormGroup>
-            <Button>Submit</Button>
+            <Button type="submit">Submit</Button>
         </Form>
         )
     }
