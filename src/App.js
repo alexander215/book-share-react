@@ -22,7 +22,7 @@ class App extends Component {
 
   register = async (data) => {
     try {
-      const registerResponse = await fetch ('http://local:8000/user/register', {
+      const registerResponse = await fetch ('http://localhost:8000/user/register', {
         method: 'POST',
         credentials: 'include',
         body: data,
@@ -35,8 +35,7 @@ class App extends Component {
       console.log(parsedResponse, '<--parsedResponse in register route')
 
       this.setState({
-        ...parsedResponse.data,
-        loading: false
+        ...parsedResponse.data
       })
       return parsedResponse;
 
