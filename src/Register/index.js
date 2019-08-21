@@ -33,6 +33,12 @@ class Register extends Component{
         for (let pair of data.entries()){
             console.log(pair[0] , ', ', pair[1])
         }
+        const registerCall = await this.props.register(data)
+        if(registerCall.status.message === "Success"){
+            
+        }
+
+        
     }
 
     render(){
