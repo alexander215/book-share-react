@@ -17,7 +17,7 @@ class Profile extends Component{
         return(
             <div>
                 <div>{this.props.userInfo.username} is here</div>
-                <div>{this.props.userInfo.photo}</div>
+                <img src={'http://localhost:8000/profile_pics/' + this.props.userInfo.photo}/>
             </div>
         )
     }

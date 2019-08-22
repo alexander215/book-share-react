@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom"
 import Login from "./Login"
 import Register from './Register'
 import Profile from "./Profile"
+import { async } from 'q';
 
 const My404 = () =>{
   return(
@@ -19,6 +20,31 @@ class App extends Component {
     email: '',
     password: '',
     photo: ''
+  }
+
+  login = async (data) => {
+    try {
+      const loginResponse = await fetch ('http://localhost:8000/user/login', {
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify(data),
+        headers: {          
+          'Content-Type': 'application/json'
+        }
+      })
+
+      const parsedResponse = await loginResponse.json()
+      console.log(parsedResponse, '<--parsedResponse in login route')
+
+      this.setState({
+        ...parsedResponse.data
+      })
+
+      return parsedResponse
+
+    } catch(err){
+      console.log(err)
+    }
   }
 
   register = async (data) => {
