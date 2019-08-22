@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch } from "react-router-dom"
 import Login from "./Login"
-import Register from './Register';
+import Register from './Register'
+import Profile from "./Profile"
 
 const My404 = () =>{
   return(
@@ -51,6 +52,7 @@ class App extends Component {
           <Route exact path ="/" component = {generic}></Route>
           <Route exact path = "/login" render={(props) => <Login {...props} logIn={this.logIn}/>}></Route>
           <Route exact path = "/register" render={(props) => <Register {...props} register={this.register}></Register>}></Route>
+          <Route exact path = "/profile" render={(props) => <Profile {...props} userInfo={this.state}></Profile>}></Route>
           <Route component = {My404}/>
         </Switch>
       </main>
