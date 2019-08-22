@@ -15,7 +15,10 @@ class Profile extends Component{
         console.log(this.state, "state in profile")
         console.log(this.props, "props in profile")
         return(
-            <div>{this.props.userInfo.username} is here</div>
+            <div>
+                <div>{this.props.userInfo.username} is here</div>
+                <div>{this.props.userInfo.photo}</div>
+            </div>
         )
     }
 }
