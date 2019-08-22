@@ -35,7 +35,9 @@ class Register extends Component{
         }
         const registerCall = await this.props.register(data)
         if(registerCall.status.message === "Success"){
-            
+            this.props.history.push("/profile")
+        }else{
+            console.log("user exists")
         }
 
         
