@@ -1,5 +1,7 @@
 import React, {Component} from "react"
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { async } from "q";
+import {Link} from "react-router-dom"
 
 class Login extends Component{
     state = {
@@ -12,20 +14,20 @@ class Login extends Component{
         console.log(this.state)
     }
 
-    handleSubmit=(e)=>{
-        e.preventDefault()
-        console.log(e.target, "hits handlesubmit")
-
-        const data = new FormData()
-        data.append("username", this.state.username)
-        data.append("password", this.state.password)
-        console.log(this.state, "this is data in login")
-
-        for (let pair of data.entries()){
-            console.log(pair[0], ":", pair[1])
-        }
-
-        this.props.history.push("/profile")
+    handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        const login = this.props.logIn(this.state);
+    
+        login.then((data) => {
+          if(data.status.message === 'Success'){
+            this.props.history.push('/profile')
+          } else {
+            console.log(data, this.props)
+          }
+        }).catch((err) => {
+          console.log(err)
+        })
     }
 
     render(){
