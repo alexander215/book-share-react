@@ -11,6 +11,8 @@ class Profile extends Component{
         photo: {}
     }
 
+
+
     render(){
         console.log(this.state, "state in profile")
         console.log(this.props, "props in profile")
