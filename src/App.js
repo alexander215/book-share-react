@@ -28,7 +28,7 @@ class App extends Component {
 
   login = async (data) => {
     try {
-      const loginResponse = await fetch ('http://localhost:8000/user/login', {
+      const loginResponse = await fetch (`${process.env.REACT_APP_BACKEND_URL}/user/login`, {
         method: "POST",
         credentials: "include",
         body: JSON.stringify(data),
@@ -53,7 +53,7 @@ class App extends Component {
 
   register = async (data) => {
     try {
-      const registerResponse = await fetch ('http://localhost:8000/user/register', {
+      const registerResponse = await fetch (`${process.env.REACT_APP_BACKEND_URL}/user/register`, {
         method: 'POST',
         credentials: 'include',
         body: data,
@@ -78,7 +78,7 @@ class App extends Component {
   userList = async(data) =>{
     console.log("hitting userList")
     try{
-      const userResponse = await fetch('http://localhost:8000/user/', {
+      const userResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/`, {
         method: "GET",
         credentials: "include",
         body: data,

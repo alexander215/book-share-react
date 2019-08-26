@@ -32,7 +32,7 @@ class Users extends Component{
                 <div>
                     <div><h2>{user.username}</h2></div>
                     <div>{user.email}</div>
-                    <img src={'http://localhost:8000/profile_pics/' + user.photo}/>
+                    <img src={`${process.env.REACT_APP_BACKEND_URL}/profile_pics/` + user.photo}/>
                 </div>
             )
         )
