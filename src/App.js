@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Switch, Link } from "react-router-dom"
+import { Route, Switch, Link, Redirect } from "react-router-dom"
 import { Button } from 'reactstrap';
 import Login from "./Login"
 import Register from './Register'
@@ -75,28 +75,31 @@ class App extends Component {
     }
   }
 
-  deleteClick = async (id) => {
-    console.log("hitting deleteClick")
-    try {
-      const userResponse = await fetch('http://localhost:8000/user/' + id, {
-        method: "DELETE",
-        credentials: "include",
-        // body: data,
-        // headers: {
-        //   'Content-Type': 'application/json'
-        // }
-      })
-      const parsedResponse = await userResponse.json()
-      console.log(parsedResponse, '<-- parsedResponse in deleteClick ')
+  // deleteClick = async (id, history) => {
+  //   console.log("hitting deleteClick")
+  //   try {
+  //     const userResponse = await fetch('http://localhost:8000/user/' + id, {
+  //       method: "DELETE",
+  //       credentials: "include",
+  //       // body: data,
+  //       // headers: {
+  //       //   'Content-Type': 'application/json'
+  //       // }
+  //     })
+  //     console.log("before parsed response")
+  //     // const parsedResponse = await userResponse.json()
+  //     // console.log(parsedResponse, '<-- parsedResponse in deleteClick ')
 
-      // router.push('/')
+  //     // router.push('/')
+  //     // return history.push(`/`)
+  //     return <Redirect to='/users' />
 
-      return parsedResponse
+  //     // return parsedResponse
 
-    } catch (err){
-      console.log(err)
-    }
-  }
+  //   } catch (err){
+  //     console.log(err)
+  //   }
+  // }
 
   userList = async(data) =>{
     console.log("hitting userList")
