@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, Link } from "react-router-dom"
+import { Button } from 'reactstrap';
 import Login from "./Login"
 import Register from './Register'
 import Profile from "./Profile"
+import NavBar from './Navbar'
+
 import { async } from 'q';
 import Users from './Users';
 
@@ -37,11 +40,11 @@ class App extends Component {
       const parsedResponse = await loginResponse.json()
       console.log(parsedResponse, '<--parsedResponse in login route')
 
-      // this.setState({
-      //   ...parsedResponse.data
-      // })
+      this.setState({
+        ...parsedResponse.data
+      })
 
-      return parsedResponse.data
+      return parsedResponse
 
     } catch(err){
       console.log(err)
@@ -96,14 +99,20 @@ class App extends Component {
   render(){
     return(
       <main>
-        <Switch>
-          <Route exact path ="/" component = {generic}></Route>
-          <Route exact path = "/login" render={(props) => <Login {...props} logIn={this.login}/>}></Route>
-          <Route exact path = "/register" render={(props) => <Register {...props} register={this.register}></Register>}></Route>
-          <Route exact path = "/profile" render={(props) => <Profile {...props} userInfo={this.state}></Profile>}></Route>
-          <Route exact path= "/users" render={(props) => <Users {...props} userState={this.state} userList={this.userList}></Users>}></Route>
-          <Route component = {My404}/>
-        </Switch>
+        <div>
+          <NavBar />
+          <br/>
+        </div>
+        <div class='main'>
+          <Switch>
+            <Route exact path ="/" component = {generic}></Route>
+            <Route exact path = "/login" render={(props) => <Login {...props} logIn={this.login}/>}></Route>
+            <Route exact path = "/register" render={(props) => <Register {...props} register={this.register}></Register>}></Route>
+            <Route exact path = "/profile" render={(props) => <Profile {...props} userInfo={this.state}></Profile>}></Route>
+            <Route exact path= "/users" render={(props) => <Users {...props} userState={this.state} userList={this.userList}></Users>}></Route>
+            <Route component = {My404}/>
+          </Switch>
+        </div>
       </main>
     )
   }
@@ -111,7 +120,22 @@ class App extends Component {
 
 const generic = ()=>{
   return(
-    <div>Main Page</div>
+    <div>
+      <h1 class='title'>Free the Books!</h1>
+      <br/>
+      <br/>
+      <br/>
+      <div>
+        <Link to='/login'>
+          <Button color="primary" size="lg" block>Login</Button>
+        </Link>
+        <br/>
+        <Link to='/register'>
+          <Button color="secondary" size="lg" block>Register</Button>
+        </Link>
+      </div>
+
+    </div>
   )
 }
 
