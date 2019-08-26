@@ -13,7 +13,7 @@ class Profile extends Component{
     }
 
     async componentDidMount(){
-        const user = await fetch(`http://localhost:8000/user/${this.props.match.params.index}`)
+        const user = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/${this.props.match.params.index}`)
         const parsedUser = await user.json()
         this.setState({
             ...parsedUser.data
@@ -26,7 +26,8 @@ class Profile extends Component{
         return(
             <div>
                 <div><h2>{this.state.username} is here!</h2></div>
-                <div><img src={'http://localhost:8000/profile_pics/' + this.state.photo}/></div>
+
+                <div><img src={`${process.env.REACT_APP_BACKEND_URL}/profile_pics/` + this.state.photo}/></div>
                 <br/>
                 <div>
                     <Button color="warning">Edit</Button>{' '}
