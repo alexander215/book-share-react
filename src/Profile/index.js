@@ -26,7 +26,13 @@ class Profile extends Component{
         return(
             <div>
                 <div><h2>{this.state.username} is here!</h2></div>
-                <img src={`${process.env.REACT_APP_BACKEND_URL}/profile_pics/` + this.state.photo}/>
+
+                <div><img src={`${process.env.REACT_APP_BACKEND_URL}/profile_pics/` + this.state.photo}/></div>
+                <br/>
+                <div>
+                    <Button color="warning">Edit</Button>{' '}
+                    <Button color="danger" onClick={() => { this.props.deleteClick(this.state.id) }}>Delete</Button>{' '}
+                </div>
             </div>
         )
     }
