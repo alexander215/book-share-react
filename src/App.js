@@ -100,7 +100,7 @@ class App extends Component {
     return(
       <main>
         <div>
-          <NavBar />
+          <NavBar nav={this.state}/>
           <br/>
         </div>
         <div class='main'>

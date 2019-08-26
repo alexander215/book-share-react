@@ -34,8 +34,9 @@ class Register extends Component{
             console.log(pair[0] , ', ', pair[1])
         }
         const registerCall = await this.props.register(data)
+        console.log(registerCall)
         if(registerCall.status.message === "Success"){
-            this.props.history.push("/profile")
+            this.props.history.push(`/profile/${registerCall.data.id}`)
         }else{
             console.log("user exists")
         }
