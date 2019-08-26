@@ -108,7 +108,7 @@ class App extends Component {
             <Route exact path ="/" component = {generic}></Route>
             <Route exact path = "/login" render={(props) => <Login {...props} logIn={this.login}/>}></Route>
             <Route exact path = "/register" render={(props) => <Register {...props} register={this.register}></Register>}></Route>
-            <Route exact path = "/profile" render={(props) => <Profile {...props} userInfo={this.state}></Profile>}></Route>
+            <Route exact path = "/profile/:index" render={(props) => <Profile {...props} userInfo={this.state}></Profile>}></Route>
             <Route exact path= "/users" render={(props) => <Users {...props} userState={this.state} userList={this.userList}></Users>}></Route>
             <Route component = {My404}/>
           </Switch>
