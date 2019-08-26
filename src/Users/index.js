@@ -30,9 +30,9 @@ class Users extends Component{
         return(
             this.state.users.map(user => 
                 <div>
-                <div>{user.email}</div>
-                <div>{user.username}</div>
-                <img src={'http://localhost:8000/profile_pics/' + user.photo}/>
+                    <div><h2>{user.username}</h2></div>
+                    <div>{user.email}</div>
+                    <img src={'http://localhost:8000/profile_pics/' + user.photo}/>
                 </div>
             )
         )
