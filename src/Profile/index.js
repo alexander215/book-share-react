@@ -57,7 +57,9 @@ class Profile extends Component{
                 <div><img src={`${process.env.REACT_APP_BACKEND_URL}/profile_pics/` + this.state.photo}/></div>
                 <br/>
                 <div>
+
                     <Button color="warning" onClick={ () => this.props.history.push(`/${this.state.id}/edit`)}>Edit</Button>{' '}
+
                     <Button color="danger" onClick={() => { this.deleteClick(this.state.id) }}>Delete</Button>{' '}
                 </div>
             </div>
