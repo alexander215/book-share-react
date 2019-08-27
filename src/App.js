@@ -6,6 +6,7 @@ import Login from "./Login"
 import Register from './Register'
 import Profile from "./Profile"
 import NavBar from './Navbar'
+import EditProfile from "./EditProfile"
 
 import { async } from 'q';
 import Users from './Users';
@@ -136,6 +137,7 @@ class App extends Component {
             <Route exact path = "/register" render={(props) => <Register {...props} register={this.register}></Register>}></Route>
             <Route exact path = "/profile/:index" render={(props) => <Profile {...props} deleteClick={this.deleteClick} userInfo={this.state}></Profile>}></Route>
             <Route exact path= "/users" render={(props) => <Users {...props} userState={this.state} userList={this.userList}></Users>}></Route>
+            <Route exact path= "/:id/edit" render={(props) => <EditProfile {...props} userState={this.state}></EditProfile>}></Route>
             <Route component = {My404}/>
           </Switch>
         </div>

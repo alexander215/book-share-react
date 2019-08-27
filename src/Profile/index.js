@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { Link, Redirect } from "react-router-dom"
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { thisExpression } from "@babel/types";
+import EditProfile from "../EditProfile"
 
 class Profile extends Component{
     state={
@@ -56,7 +57,9 @@ class Profile extends Component{
                 <div><img src={`${process.env.REACT_APP_BACKEND_URL}/profile_pics/` + this.state.photo}/></div>
                 <br/>
                 <div>
-                    <Button color="warning">Edit</Button>{' '}
+
+                    <Button color="warning" onClick={ () => this.props.history.push(`/${this.state.id}/edit`)}>Edit</Button>{' '}
+
                     <Button color="danger" onClick={() => { this.deleteClick(this.state.id) }}>Delete</Button>{' '}
                 </div>
             </div>
